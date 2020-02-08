@@ -7,6 +7,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import EmailScreen from '../screens/EmailScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -27,8 +28,8 @@ HomeStack.navigationOptions = {
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          ? `ios-home-outline${focused ? '' : '-outline'}`
+          : 'md-home'
       }
     />
   ),
@@ -44,14 +45,16 @@ const LinksStack = createStackNavigator(
 );
 
 LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+  tabBarLabel: 'Search',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-search' : 'md-search'} />
   ),
 };
 
 LinksStack.path = '';
 
+
+//NotificationStack
 const SettingsStack = createStackNavigator(
   {
     Settings: SettingsScreen,
@@ -60,18 +63,39 @@ const SettingsStack = createStackNavigator(
 );
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+  tabBarLabel: 'Notification',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-notifications-outline' : 'md-notifications-outline'} />
   ),
 };
 
 SettingsStack.path = '';
 
+
+//EmailStack
+
+const EmailStack = createStackNavigator(
+  {
+    Emails: EmailScreen,
+  },
+  config
+);
+
+EmailStack.navigationOptions = {
+  tabBarLabel: 'Email',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-mail' : 'md-mail'} />
+  ),
+};
+
+EmailStack.path = '';
+
+
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
+  EmailStack,
 });
 
 tabNavigator.path = '';

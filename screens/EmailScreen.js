@@ -1,24 +1,21 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
-export default function LinksScreen() {
+export default function EmailScreen() {
   return (
     <View style={styles.container}>
-        <Text style={styles.text}>Hello to Search Screen</Text>
+      <Text style={styles.text}>Welcome, Email Screen</Text>
     </View>
   );
 }
-
-LinksScreen.navigationOptions = {
-  title: 'Links',
-};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent:"center",
     alignSelf:"center",
-    backgroundColor:"#2703A6"
+    backgroundColor:"#F2B705"
+   
   },
 
   text:{
@@ -26,4 +23,4 @@ const styles = StyleSheet.create({
     color:"#fff",
     textAlign:"center"
   }
-});
+})
